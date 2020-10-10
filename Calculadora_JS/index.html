@@ -11,83 +11,82 @@
 
 <body>
     <div id="calculadoraBox">
-        <h3 class="letrasNegras">MI CALCULADORA</h3>
-
         <!--TABLA PARA LOS BOTONES-->
         <table id="calculadora">
-            <!--EL RESULTADO-->
+            <!--Primera Fila - EL RESULTADO-->
             <tr>
-                <th id="resultado" class="letrasNegras resultadoOperacion" colspan="4">
+                <th class="letrasNegras resultadoOperacion" colspan="4">
+                    <p id="resultadoVisible"></p>
                 </th>
             </tr>
 
-            <!--Primera fila-->
-            <tr>
-                <th id="borrar" class="boton botonVerde letrasBlancas">
-                    CE
-                </th>
-                <th id="operacionPorcentaje" class="boton botonAguaMarina letrasBlancas">
-                    %
-                </th>
-                <th id="operacionSuma" class="boton botonAguaMarina letrasBlancas">
-                    +
-                </th>
-                <th id="operacionResta" class="boton botonAguaMarina letrasBlancas">
-                    -
-                </th>
-            </tr>
             <!--Segunda fila-->
             <tr>
-                <th id="num7" class="boton botonAguaMarina letrasBlancas">
-                    7
+                <th id="reset" class="boton botonVerde btnPress">
+                    <p class="letrasBlancas">CE</p>
                 </th>
-                <th id="num8" class="boton botonAguaMarina letrasBlancas">
-                    8
+                <th id="operacionPorcentaje" class="boton botonAguaMarina btnPress">
+                    <p class="letrasBlancas">%</p>
                 </th>
-                <th id="num9" class="boton botonAguaMarina letrasBlancas">
-                    9
+                <th id="operacionSuma" class="boton botonAguaMarina btnPress" value="+">
+                    <p class="letrasBlancas">+</p>
                 </th>
-                <th id="operacionDivision" class="boton botonAguaMarina letrasBlancas">
-                    /
+                <th id="operacionResta" class="boton botonAguaMarina btnPress" value="-">
+                    <p class="letrasBlancas">-</p>
                 </th>
             </tr>
             <!--Tercera fila-->
             <tr>
-                <th id="num4" class="boton botonAguaMarina letrasBlancas">
-                    4
+                <th id="num7" class="boton botonAguaMarina btnPress">
+                    <p class="letrasBlancas">7</p>
                 </th>
-                <th id="num5" class="boton botonAguaMarina letrasBlancas">
-                    5
+                <th id="num8" class="boton botonAguaMarina btnPress">
+                    <p class="letrasBlancas">8</p>
                 </th>
-                <th id="num6" class="boton botonAguaMarina letrasBlancas">
-                    6
+                <th id="num9" class="boton botonAguaMarina btnPress">
+                    <p class="letrasBlancas">9</p>
                 </th>
-                <th id="operacionMultiplicacion" class="boton botonAguaMarina letrasBlancas">
-                    X
+                <th id="operacionDivision" class="boton botonAguaMarina btnPress">
+                    <p class="letrasBlancas">/</p>
                 </th>
             </tr>
             <!--Cuarta fila-->
             <tr>
-                <th id="num1" class="boton botonAguaMarina letrasBlancas">
-                    1
+                <th id="num4" class="boton botonAguaMarina btnPress">
+                    <p class="letrasBlancas">4</p>
                 </th>
-                <th id="num2" class="boton botonAguaMarina letrasBlancas">
-                    2
+                <th id="num5" class="boton botonAguaMarina btnPress">
+                    <p class="letrasBlancas">5</p>
                 </th>
-                <th id="num3" class="boton botonAguaMarina letrasBlancas">
-                    3
+                <th id="num6" class="boton botonAguaMarina btnPress">
+                    <p class="letrasBlancas">6</p>
                 </th>
-                <th id="resultado" rowspan="2" class="boton botonRojo letrasBlancas">
-                    =
+                <th id="operacionMultiplicacion" class="boton botonAguaMarina btnPress">
+                    <p class="letrasBlancas">X</p>
                 </th>
             </tr>
             <!--Quinta fila-->
             <tr>
-                <th id="num0" colspan="2" class="boton botonAguaMarina letrasBlancas">
-                    0
+                <th id="num1" class="boton botonAguaMarina btnPress">
+                    <p class="letrasBlancas">1</p>
                 </th>
-                <th id="punto" class="boton botonAguaMarina letrasBlancas">
-                    .
+                <th id="num2" class="boton botonAguaMarina btnPress">
+                    <p class="letrasBlancas">2</p>
+                </th>
+                <th id="num3" class="boton botonAguaMarina btnPress">
+                    <p class="letrasBlancas">3</p>
+                </th>
+                <th id="resultado" rowspan="2" class="boton botonRojo btnPress">
+                    <p class="letrasBlancas">=</p>
+                </th>
+            </tr>
+            <!--Sexta fila-->
+            <tr>
+                <th id="num0" colspan="2" class="boton botonAguaMarina btnPress">
+                    <p class="letrasBlancas">0</p>
+                </th>
+                <th id="punto" class="boton botonAguaMarina btnPress">
+                    <p class="letrasBlancas">.</p>
                 </th>
             </tr>
         </table>
