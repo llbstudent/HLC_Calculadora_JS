@@ -29,7 +29,7 @@ table tr th {
     border-radius: 10px 10px 10px 10px;
     background-color: rgb(189, 189, 189);
     border: solid 3px rgb(58, 58, 58);
-    width: max-content;
+    width: fit-content;
     padding: 2%;
 }
 
@@ -37,13 +37,17 @@ table tr th {
     border-radius: 10px 10px 10px 10px;
     background-color: rgba(143, 221, 166, 0.644);
     border: solid 3px rgb(58, 58, 58);
-    width: max-content;
+    width: fit-content;
     padding: 2%;
 }
 
 .resultadoOperacion p {
     text-align: end;
     font-size: 150%;
+}
+
+.resultadoOperacion #valorAnterior {
+    font-size: 70%;
 }
 
 

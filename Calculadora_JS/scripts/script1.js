@@ -1,13 +1,18 @@
+'use strict'
+
 //Var globales
 var acumulaNumeros = '0'; // Nos servirá para acumular números
 var operador = ""; // Nos servirá para conocer la operación que queremos realizar
 var resultado = 0; // Nos servirá para guardar un resultado previo y/o actual
-var resultadoVisible;
+var resultadoVisible; //Nos servirá para ver en nuestra página el resultado actual
+var valorAnterior; //Nos servirá para ver en nuestra página el resultado anterior
+var introduccionPunto = true; //Nos servirá para controlar que sólo se pueda introducir un punto para los números decimales
 
 //Main
-window.addEventListener('load', function() {
+function main() {
     //Capturamos los elementos necesarios
     resultadoVisible = document.getElementById("resultadoVisible");
+    valorAnterior = document.getElementById("valorAnterior");
     var btnCalc = document.getElementsByClassName("btnPress");
 
     //Añadimos eventos a todos los botones
@@ -17,28 +22,38 @@ window.addEventListener('load', function() {
 
     //Visulalización del número actual en la calculadora
     resultadoVisible.innerHTML = acumulaNumeros;
-})
+}
 
-//Métodos
+//----------------------------------------------------
+// MÉTODOS
+//----------------------------------------------------
+
+
+// Método ligado al evento 'click' de los botones
+// Dependiendo de cual pulsemos, si es un número, operación...
+// Llamará a otro método
 function pulsaBoton() {
     if (this.id.includes('num')) {
         addNumber(this.id);
 
     } else if (this.id.includes('operacion')) {
-        console.log("Soy una operación " + this.id);
+        introduccionPunto = true;
+        resultadoVisible.innerHTML = 0;
         addOperator(this.id);
 
     } else if (this.id.includes('punto')) {
-        console.log("Soy un punto " + this.id);
+        addDot(this.id);
 
     } else if (this.id.includes('reset')) {
         resultado = 0;
         acumulaNumeros = '0';
+        introduccionPunto = true;
         resultadoVisible.innerHTML = acumulaNumeros;
+        valorAnterior.innerHTML = acumulaNumeros;
 
     } else if (this.id.includes('resultado')) {
+        introduccionPunto = true;
         calcularResultado();
-
     }
 }
 
@@ -143,8 +158,8 @@ function addNumber(num) {
 //Método que nos selecciona la operación que deseamos
 function addOperator(operacion) {
     resultado = Number(acumulaNumeros);
+    valorAnterior.innerHTML = String(resultado);
     acumulaNumeros = '0';
-    //console.log(operacion);
 
     switch (operacion) {
         case 'operacionPorcentaje':
@@ -166,47 +181,55 @@ function addOperator(operacion) {
         case 'operacionDivision':
             operador = '/';
             break;
+    }
+    valorAnterior.innerHTML = resultado + operador;
+}
 
-        default:
-            break;
+
+// Método que nos controla el evento al pulsar un botón, para que solo podamos introducir un punto
+function addDot() {
+    if (introduccionPunto && !acumulaNumeros.includes('.')) {
+        introduccionPunto = false;
+        acumulaNumeros += String('.');
+        resultadoVisible.innerHTML = acumulaNumeros;
     }
 }
 
 
 //----------------------------------------------------------
-// FUNCIONES PARA EL CALCULO DE LAS OPERACIONES ARITMÉTICAS
+// FUNCIÓN PARA EL CALCULO DE LAS OPERACIONES ARITMÉTICAS
 //----------------------------------------------------------
 function calcularResultado() {
     switch (operador) {
         case '+':
             resultado += Number(acumulaNumeros);
             acumulaNumeros = String(resultado);
-            resultadoVisible.innerHTML = acumulaNumeros;
             break;
 
         case '-':
             resultado -= Number(acumulaNumeros);
             acumulaNumeros = String(resultado);
-            resultadoVisible.innerHTML = acumulaNumeros;
             break;
 
         case '*':
             resultado *= Number(acumulaNumeros);
             acumulaNumeros = String(resultado);
-            resultadoVisible.innerHTML = acumulaNumeros;
             break;
 
         case '/':
             resultado /= Number(acumulaNumeros);
             acumulaNumeros = String(resultado);
-            resultadoVisible.innerHTML = acumulaNumeros;
             break;
 
         case '%':
             resultado = (resultado * Number(acumulaNumeros)) / 100;
             acumulaNumeros = String(resultado);
-            resultadoVisible.innerHTML = acumulaNumeros;
             break;
 
     }
+    valorAnterior.innerHTML = acumulaNumeros;
+    resultadoVisible.innerHTML = 0;
 }
+
+//Primero cargaremos los elementos del 'DOM'
+window.addEventListener('load', main);
